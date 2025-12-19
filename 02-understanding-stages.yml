@@ -14,35 +14,25 @@ stages:
         steps:
           - bash: echo Build SecondJob
 
-  - stage: DevDeployuild
+  - stage: DevDeploy
+    dependsOn: Build
     jobs:
-      - job: DevDployJob
+      - job: DevDeployJob
         steps:
           - bash: echo DevDeployJob
 
   - stage: QADeploy
+    dependsOn: Build
     jobs:
       - job: QADeployJob
         steps:
           - bash: echo QADeployJob
 
-  - stage: ProdDeployJob
+  - stage: ProdDeploy
+    dependsOn:
+          - DevDeploy
+          - QADeploy
     jobs:
       - job: ProdDeployJob
         steps:
           - bash: echo ProdDeployJob
-
-  # - stage: DevDeploy
-  #     - job: DevDeployJob
-  #       steps:
-  #         - bash: echo DevDeployJob
-
-  # - stage: QADeploy
-  #     - job: QADeployJob
-  #       steps:
-  #         - bash: echo QADeployJob
-
-  # - stage: ProdDeploy
-  #      - job: ProdDeployJob
-  #        steps:
-  #         - bash: echo ProdDeployJob
