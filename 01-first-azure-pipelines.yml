@@ -26,3 +26,9 @@ jobs:
   steps:
     - script: echo Job2
       displayName: 'Echoing Job2'
+
+- job: Job3
+  dependsOn: Job2
+  steps:
+    - script: echo Job!
+      displayName: 'Echoing Job3'
