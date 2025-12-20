@@ -22,5 +22,5 @@ stages:
         containerRegistry: '28-docker-konnect'
         repository: 'flexor/28build'
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        Dockerfile: '$(Build.SourcesDirectory)/projects/hello-world/hello-world-java/Dockerfile'
         tags: '$(tag)'
