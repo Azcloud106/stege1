@@ -1,5 +1,8 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
+FROM eclipse-temurin:8-jre-alpine
+WORKDIR /app
+
 EXPOSE 8080
-ADD target/*.jar app.jar
-ENTRYPOINT [ "sh", "-c", "java -jar /app.jar" ]
+
+COPY target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
